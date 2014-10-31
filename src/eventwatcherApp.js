@@ -1,0 +1,1 @@
+var eventwatcherApp = angular.module('eventwatcherApp', []);
