@@ -6,7 +6,7 @@ eventwatcherApp.service('EventWatcher', function($window, $timeout) {
   this.timeStamp = 0;
   this.events = {};
 
-  this.addEvent = function(eventName, element) {
+  this.addEvent = function(eventName, element, throttle) {
     if (!element) {
       element = $window;
     }
@@ -19,7 +19,8 @@ eventwatcherApp.service('EventWatcher', function($window, $timeout) {
         },
         element: $window
       };
-      angular.element(element).on(eventName, EventWatcher.events[eventName].fn);
+      var fn = EventWatcher.events[eventName].fn.throttle(throttle);
+      angular.element(element).on(eventName, fn);
     }
   };
 
