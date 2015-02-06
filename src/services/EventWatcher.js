@@ -16,7 +16,7 @@ eventwatcherApp.service('EventWatcher', function($window, $timeout) {
             EventWatcher.events[eventName].timeStamp = e.timeStamp;
           });
         },
-        element: $window
+        element: element
       };
       var fn = EventWatcher.events[eventName].fn.throttle(throttle);
       angular.element(element).on(eventName, fn);
