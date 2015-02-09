@@ -14,8 +14,10 @@ eventwatcherApp.service('EventWatcher', function($window, $timeout) {
         fn: function(e) {
           $timeout(function() {
             EventWatcher.events[eventName].timeStamp = e.timeStamp;
+            EventWatcher.events[eventName].events[e.timeStamp] = e;
           });
         },
+        events: {},
         element: element
       };
       var fn = EventWatcher.events[eventName].fn.throttle(throttle);
